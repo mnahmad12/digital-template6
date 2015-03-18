@@ -84,8 +84,8 @@ window.onload = function() {
 					this.star.cy = y;
 
 					this.star.anchor.set(0.5);
-					this.sprites.addChild(star);
-					this.stars.push(star);
+					this.sprites.addChild(this.star);
+					this.stars.push(this.star);
 				}
 			}
 			
