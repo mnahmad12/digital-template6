@@ -12,7 +12,27 @@ window.onload = function() {
     // All loading functions will typically all be found inside "preload()".
     
     "use strict";
-    
+    /*
+		Game Overview:
+			Theme: Stranger's Cell Phone
+			...One day you are walking to school and discover a phone on the sidewalk,
+				just when you are about to move on it rings...
+				
+				.."Hello George, a zombie outbreak is happening now in your city, you have to find the vial
+					of cure, they are coming George, hurry! ..
+					
+					..what do you mean..who are you..."1 hour George, hurry they are on the way"
+	
+			Game details: 
+				1) You start in the middle of the map and can shoot
+				2) The map is dark and you can't see around, you have a flashlight that lights up an area
+				3) There are zombies (in red) that are moving around the map, if they run into you, you
+					lose a life point
+				4) Find the zombies, kill them
+				5) There is a vial somewhere on the map, if you find it you cure the city if you dont (within 2 min)
+					you die, everyone becomes a zombie..
+	
+	*/
 	
 	var P2Game = {};
 	
@@ -24,42 +44,67 @@ window.onload = function() {
 		this.background;
 		this.text;
 		this.style;
+		this.sprites;
+		this.stars;
+		this.xs;
+		this.ys;
+		this.star;
+		
 	};
 	
 	P2Game.StateA.prototype = 
 	{
-		
-		
-		 gotoStateB: function () 
-		{
-
-			this.state.start('StateB');
-
-		},
-		
+		//PRELOAD
 		preload: function()
 		{
-			this.load.image('worldBack','assets/metal.png')
+			this.load.image('block','assets/block.png')
 			
 		},
 		
+
 		update: function()
 		{
-			this.background=this.game.add.tileSprite(0, 0,800,600, 'worldBack');
+			this.sprites = game.add.spriteBatch();
 			
-			this.style = {font: "25px Arial", fill: "#00FF0A", align: "center" };
-			this.text = this.add.text( this.world.centerX, 150, "Once upon a time phaser-dude bob " +
-				"lost his dog.\n He searched and he searched but to no avail.\n Until one day, a message showed up at his house\n" +
-				" if you want you dog back, go to the Lair of the Monsters,\n find the 3 hidden keys and only then will you get" + 
-				"back you dog!\n So Bob went....... \n\n(Press the Left Arrow, <- , to begin)", this.style );
-			this.text.anchor.setTo( 0.5, 0.0 );
+			this.stars=[];
 			
+			this.xs = 25;
+			this.ys = 30;
+			
+			for (var y = 0; y < 10; y++)
+			{
+				for (var x = 0; x < 20; x++)
+				{
+					this.star = game.make.sprite(150 + (x * xs), 150 + (y * ys), 'block');
+
+					this.star.ox = star.x;
+					this.star.oy = star.y;
+
+					this.star.cx = x;
+					this.star.cy = y;
+
+					this.star.anchor.set(0.5);
+					this.sprites.addChild(star);
+					this.stars.push(star);
+				}
+			}
 			
 			this.cursors = this.input.keyboard.createCursorKeys();
 			if (this.cursors.left.isDown)
 			{
 				this.gotoStateB();
 			}
+			
+		},
+		
+		
+		
+		//Go To State B
+		gotoStateB: function () 
+		{
+
+			this.state.start('StateB');
+
 		}
 	
 	}
