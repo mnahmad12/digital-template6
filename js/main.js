@@ -64,7 +64,7 @@ window.onload = function() {
 
 		update: function()
 		{
-			this.sprites = game.add.spriteBatch();
+			this.sprites = this.add.spriteBatch();
 			
 			this.stars=[];
 			
@@ -75,7 +75,7 @@ window.onload = function() {
 			{
 				for (var x = 0; x < 20; x++)
 				{
-					this.star = game.make.sprite(150 + (x * this.xs), 150 + (y * this.ys), 'block');
+					this.star = this.make.sprite(150 + (x * this.xs), 150 + (y * this.ys), 'block');
 
 					this.star.ox = star.x;
 					this.star.oy = star.y;
