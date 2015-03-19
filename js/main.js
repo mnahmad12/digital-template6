@@ -101,7 +101,7 @@ window.onload = function() {
 				this.gotoStateB();
 			}
 			
-			for (var i = 0, len = stars.length; i < len; i++)
+			for (var i = 0, len = this.stars.length; i < len; i++)
 			{
 				this.stars[i].tint=0xff00ff;
 			}
