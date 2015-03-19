@@ -103,7 +103,7 @@ window.onload = function() {
 			
 			for (var i = 0, len = this.stars.length; i < len; i++)
 			{
-				this.stars[i].tint=0xff00ff;
+				this.stars.tint=0xFF0000;
 			}
 		},
 		
