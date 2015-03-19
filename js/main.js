@@ -62,7 +62,7 @@ window.onload = function() {
 		},
 		
 
-		update: function()
+		create: function()
 		{
 			this.sprites = this.add.spriteBatch();
 			
@@ -77,8 +77,8 @@ window.onload = function() {
 				{
 					this.star = this.make.sprite(150 + (x * this.xs), 150 + (y * this.ys), 'block');
 
-					this.star.ox = star.x;
-					this.star.oy = star.y;
+					this.star.ox = this.star.x;
+					this.star.oy = this.star.y;
 
 					this.star.cx = x;
 					this.star.cy = y;
@@ -89,12 +89,22 @@ window.onload = function() {
 				}
 			}
 			
+			
+			
+		},
+		
+		update: function()
+		{
 			this.cursors = this.input.keyboard.createCursorKeys();
 			if (this.cursors.left.isDown)
 			{
 				this.gotoStateB();
 			}
 			
+			for (var i = 0, len = stars.length; i < len; i++)
+			{
+				this.stars[i].tint=0xff00ff;
+			}
 		},
 		
 		
